@@ -3,3 +3,5 @@ email: plugo@captnemo.in
 description: >
   Easily accessible website detailing where all plugo powerbanks are available.
 theme: minima
+baseurl: /plugo/
+url: https://captnemo.in
