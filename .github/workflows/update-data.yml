@@ -1,0 +1,23 @@
+name: Update Data
+on:
+  push:
+  schedule:
+    # “At minute 7 past hour 4, 7, 10, 13, and 16.” 
+    # UTC time = 9:30, 12:30, 15:30, 18:30, 21:30 IST
+    # https://crontab.guru/#7_4,7,10,13,16_*_*_*
+    - cron: '7 4,7,10,13,16 * * *'
+jobs:
+  update:
+    name: Update data
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        ref: ${{ github.head_ref }}
+    - name: Update data
+      run: >
+        curl --request GET --url 'https://prod.plugo.io/api/v2/goblin/stores?lat=18.46448805396234&lng=72.12753139436244&radius=90999999' --header 'Authorization: Bearer ${{secrets.token}}' > _data/plugo.json
+    - uses: stefanzweifel/git-auto-commit-action@v4
+      with:
+        commit_message: Update Plugo Data
+        commit_author: Nemo's Bot <github.actions@captnemo.in>
