@@ -5,3 +5,4 @@ description: >
 theme: minima
 baseurl: /plugo/
 url: https://captnemo.in
+timezone: Asia/Kolkata
