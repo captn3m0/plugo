@@ -46,10 +46,11 @@ layout: default
 	<li>Total Available Powerbanks: {{total}}</li>
 	<li>Total Locations: {{locations|size}}</li>
   <li>Last Updated: {{site.time | date: "%Y-%m-%d %H:%M" }} IST</li>
+  <li>This page is updated 5 times a day, at roughly 0930, 1230, 1530, 1830, 2130 IST</li>
 </ul>
 
 <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
-<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
+<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js" integrity="sha256-04C2SeXF6JtsrsX+sFnI+gFdm56VJdhW49hWm4m+0io=" crossorigin="anonymous"></script>
 <script>
 	let table = new DataTable('#plugo-data', {
 		"paging": false,
