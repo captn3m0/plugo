@@ -2,13 +2,13 @@
 layout: default
 ---
 
+{% assign zeroPowerBankLocations = 0 %}
 <table id="plugo-data">
 	<thead>
 		<tr>
-			<th>City, State</th>
+			<!-- <th>City, State</th> -->
 			<th>Address</th>
 			<th>Location Type</th>
-			<th>Contact</th>
 			<th><span title="Number of Powerbanks">Count</span></th>
 			<th>Date Added</th>
 		</tr>
@@ -19,7 +19,7 @@ layout: default
 {% for row in locations %}
 <tr>
 	{% assign state_lower_case =  row.state|downcase %}
-	<td>{{site.data.city[city_lower_case] | default:row.city}}, {{site.data.state[state_lower_case] | default: row.state}}</td>
+	<!-- <td>{{site.data.city[city_lower_case] | default:row.city}}, {{site.data.state[state_lower_case] | default: row.state}}</td> -->
 	{% assign city_lower_case =  row.city|downcase %}
 	<td>
 		{{row.name}}<br>
@@ -29,10 +29,13 @@ layout: default
 		{% assign w=row.website|strip %}
 		{% if  w!="" %}<br><a href="{% if w contains 'http' %}{%else%}http://{%endif%}{{w}}" title="Website for {{row.name|strip}}">🔗</a>{%endif%}
 		<a href="geo:{{row.lat}},{{row.lng}};z=19" title='Open in Maps Application'>🗺</a>
+    {% if row.mobile %}{%unless row.mobile contains '8047112182' %} <a href="tel:{{row.mobile| strip}}" title="Link to call {{row.name | strip}}">📞</a>{%endunless%}{%endif%}
 	</td>
 	<td>{{row.business}}</td>
-	<td>{% if row.mobile%} <a href="tel:{{row.mobile| strip}}" title="Link to call {{row.name | strip}}">{{row.mobile| strip}}</a>{%endif%}</td>
 	<td>{{row.totalAvailablePowerbanks}}</td>
+  {% if row.totalAvailablePowerbanks == 0 %}
+  {% assign zeroPowerBankLocations = zeroPowerBankLocations | plus:1 %}
+  {% endif %}
 	<td>{{row.createdAt | date_to_string}}</td>
 	{% assign total = total|plus:row.totalAvailablePowerbanks %}
 	<!-- <td>{%if row.isVisible %}☑{%else%}❌{%endif%}</td> -->
@@ -45,8 +48,9 @@ layout: default
 <ul>
 	<li>Total Available Powerbanks: {{total}}</li>
 	<li>Total Locations: {{locations|size}}</li>
+  <li>{{zeroPowerBankLocations}} locations with zero powerbanks</li>
   <li>Last Updated: {{site.time | date: "%Y-%m-%d %H:%M" }} IST</li>
-  <li>This page is updated 5 times a day, at roughly 0930, 1230, 1530, 1830, 2130 IST</li>
+  <li>This page is automatically updated 5 times a day, at roughly 0930, 1230, 1530, 1830, 2130 IST</li>
 </ul>
 
 <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
