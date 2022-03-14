@@ -2,7 +2,8 @@ name: Update Data
 on:
   schedule:
     # “At minute 7 past hour 4, 7, 10, 13, and 16.” 
-    # UTC time = 9:30, 12:30, 15:30, 18:30, 21:30 IST
+    # 4:00, 7:00,  10:00, 13:00, 16:00 UTC
+    # 9:30, 12:30, 15:30, 18:30, 21:30 IST
     # https://crontab.guru/#7_4,7,10,13,16_*_*_*
     - cron: '7 4,7,10,13,16 * * *'
 jobs:
@@ -19,3 +20,4 @@ jobs:
     - uses: stefanzweifel/git-auto-commit-action@v4
       with:
         commit_message: Update Plugo Data
+        commit_author: GitHub Actions <41898282+github-actions[bot]@users.noreply.github.com>
