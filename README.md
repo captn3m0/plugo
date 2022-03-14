@@ -1,4 +1,4 @@
-# plugo
+# plugo ![Website](https://img.shields.io/website?url=https%3A%2F%2Fcaptnemo.in%2Fplugo%2F) ![GitHub last commit](https://img.shields.io/github/last-commit/captn3m0/plugo?label=last%20updated)
 
 Where in the world are Plugo's powerbanks.
 
