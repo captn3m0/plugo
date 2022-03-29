@@ -1,0 +1,35 @@
+---
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+>
+	<channel>
+		<title>Plugo Powerbanks Location Availability</title>
+		<description>RSS Feed of Plugo.io locations. New locations will automatically send you a notification. </description>		
+		<sy:updatePeriod>daily</sy:updatePeriod>
+		<sy:updateFrequency>1</sy:updateFrequency>
+		<link>{{ site.url }}{{site.baseurl}}</link>
+		<atom:link href="{{ site.url }}{{site.baseurl}}feed.xml" rel="self" type="application/rss+xml" />
+		<lastBuildDate>{{ site.time | date_to_rfc822 }}</lastBuildDate>
+		{% assign locations = site.data.plugo | sort:'createdAt' | reverse %}
+		{% for row in locations limit:10 %}
+			<item>
+				<title>{{ row.name | xml_escape }}</title>
+				<description>{%capture description%}
+
+					{% include location.html data=row %}
+					<br>
+					Location Type: {{row.business}}
+					{%endcapture%}
+
+					{{ description | xml_escape }}</description>
+				<pubDate>{{ row.createdAt | date_to_rfc822 }}</pubDate>
+				<link>{{ site.url }}{{site.baseurl}}#{{row.id}}</link>
+				<guid>{{row.id}}</guid>
+			</item>
+		{% endfor %}
+	</channel>
+</rss>

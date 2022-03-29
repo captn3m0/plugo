@@ -1,0 +1,16 @@
+{% assign city_lower_case =  include.data.city|downcase %}
+	{{include.data.name}}<br>
+	{% if include.data.floor!="NA"%}{{include.data.floor}}, {%endif %}
+{% assign address = include.data.address %}
+{% for mapping in site.include.data.city %}
+{% assign old=mapping[0] %}
+{% assign new=mapping[1] %}
+{% assign address = address|replace:old,new %}
+{% endfor %}
+	{{address}}
+	<br>
+	{% assign w=include.data.website|strip %}
+	{% if  w!="" %}<br><a href="{% if w contains 'http' %}{%else%}http://{%endif%}{{w}}" title="Website for {{include.data.name|strip}}">🔗</a>{%endif%}
+	<a href="geo:{{include.data.lat}},{{include.data.lng}};z=19" title='Open in Maps Application'>🗺</a>
+{%comment%}8047112182 is Plugo's office number{%endcomment%}
+{% if include.data.mobile %}{%unless include.data.mobile contains '8047112182' %} <a href="tel:{{include.data.mobile| strip}}" title="Link to call {{include.data.name | strip}}">📞</a>{%endunless%}{%endif%}
