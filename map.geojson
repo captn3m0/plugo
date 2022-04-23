@@ -1,0 +1,34 @@
+---
+---
+{
+  "type": "FeatureCollection",
+  "features": [{% for location in site.data.plugo %}
+  	{% if location.totalAvailablePowerbanks > 0 %}
+    {
+      "type": "Feature",
+      "properties": {
+      	"shorttitle": {{location.name | truncate:20| jsonify}},
+        "title": {{location.name|jsonify}},{% assign w=location.website|strip %}{% if  w!="" %}
+        "url": "{% if w contains 'http' %}{%else%}http://{%endif%}{{w}}",{%endif%}
+        "geourl": "geo:{{location.lat}},{{location.lng}}",
+        {%capture ADDRESS %}{% include address.html address=location.address%}{%endcapture%}
+        "address": {{ADDRESS |jsonify}},
+        "count": {{location.totalAvailablePowerbanks}},
+        {% if location.mobile %}{%unless location.mobile contains '8047112182' %}
+        "tel": "tel:{{location.mobile| strip}}",
+        {%endunless%}{%endif%}
+        {%capture html%}{% include location.html data=location %}{%endcapture%}
+        "description": {{html|strip|jsonify}},
+        "type": {{location.business|jsonify}},
+        {%capture icon %}{%include icon.html data=location%}{%endcapture%}
+        "icon": "{{icon| strip}}",
+        "id": "{{location.id}}"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [{{location.lng}},{{location.lat}}]
+      }
+    }{% endif %}
+    {% if forloop.rindex > 1 %}{%if location.totalAvailablePowerbanks>0 %},{%endif%}{% endif%}{% endfor %}
+  ]
+}

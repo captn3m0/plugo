@@ -1,6 +1,10 @@
 ---
 layout: default
 ---
+<details open>
+	<summary>Show Map</summary>
+	<div width="740px" height="300px" id="map"></div>
+</details>
 
 {{content}}
 
@@ -46,6 +50,7 @@ layout: default
   <li>{{zeroPowerBankLocations}} locations with zero powerbanks</li>
   <li>Last Updated: {{site.time | date: "%Y-%m-%d %H:%M" }} IST</li>
   <li>This page is automatically updated 5 times a day, at roughly 0930, 1230, 1530, 1830, 2130 IST</li>
+  <li>The map is also available in <a href="map.geojson">GeoJSON Format</a>. You can also view the underlying data directly at <a href="http://geojson.io/#data=data:text/x-url,https://captnemo.in/plugo/map.geojson">geojson.io</a>.
 </ul>
 
 <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
@@ -58,4 +63,7 @@ layout: default
 	});
 </script>
 
+<link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/v2.8.2/mapbox-gl.css" integrity="sha256-eQmEh0JSFrPkGN9Lge0CpB3ZMAiwuSBq9tQKMURq0do=" crossorigin="anonymous">
+<script src="https://api.mapbox.com/mapbox-gl-js/v2.8.2/mapbox-gl.js" integrity="sha256-s0WzvUEKt3AVyIJQ7kE4w+yqDoZxIiMiW+dImDRo5/E=" crossorigin="anonymous"></script>
 <link rel="stylesheet" type="text/css" href="/plugo/assets/style.css">
+<script src="/plugo/map.js"></script>

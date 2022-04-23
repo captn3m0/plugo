@@ -1,13 +1,7 @@
 {% assign city_lower_case =  include.data.city|downcase %}
 	{{include.data.name}}<br>
 	{% if include.data.floor!="NA"%}{{include.data.floor}}, {%endif %}
-{% assign address = include.data.address %}
-{% for mapping in site.include.data.city %}
-{% assign old=mapping[0] %}
-{% assign new=mapping[1] %}
-{% assign address = address|replace:old,new %}
-{% endfor %}
-	{{address}}
+	{% include address.html address=include.data.address %}
 	<br>
 	{% assign w=include.data.website|strip %}
 	{% if  w!="" %}<br><a href="{% if w contains 'http' %}{%else%}http://{%endif%}{{w}}" title="Website for {{include.data.name|strip}}">🔗</a>{%endif%}

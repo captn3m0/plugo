@@ -94,7 +94,7 @@ table.dataTable tr.dt-hasChild td.dt-control:before {
   content: "-";
   background-color: #d33333;
 }
- 
+
 /*
  * Table styles
  */
@@ -159,7 +159,8 @@ table.dataTable tbody th,
 table.dataTable tbody td {
   padding: 8px 10px;
 }
-table.dataTable.nowrap th, table.dataTable.nowrap td {
+table.dataTable.nowrap th,
+table.dataTable.nowrap td {
   white-space: nowrap;
 }
 table.dataTable.compact thead th,
@@ -174,12 +175,12 @@ table.dataTable.compact tbody th,
 table.dataTable.compact tbody td {
   padding: 4px;
 }
- 
+
 table.dataTable th,
 table.dataTable td {
   box-sizing: content-box;
 }
- 
+
 /*
  * Control feature layout
  */
@@ -250,12 +251,68 @@ table.dataTable td {
   *margin-top: -1px;
   -webkit-overflow-scrolling: touch;
 }
-.dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody > table > thead > tr > th, .dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody > table > thead > tr > td, .dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody > table > tbody > tr > th, .dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody > table > tbody > tr > td {
+.dataTables_wrapper
+  .dataTables_scroll
+  div.dataTables_scrollBody
+  > table
+  > thead
+  > tr
+  > th,
+.dataTables_wrapper
+  .dataTables_scroll
+  div.dataTables_scrollBody
+  > table
+  > thead
+  > tr
+  > td,
+.dataTables_wrapper
+  .dataTables_scroll
+  div.dataTables_scrollBody
+  > table
+  > tbody
+  > tr
+  > th,
+.dataTables_wrapper
+  .dataTables_scroll
+  div.dataTables_scrollBody
+  > table
+  > tbody
+  > tr
+  > td {
   vertical-align: middle;
 }
-.dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody > table > thead > tr > th > div.dataTables_sizing,
-.dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody > table > thead > tr > td > div.dataTables_sizing, .dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody > table > tbody > tr > th > div.dataTables_sizing,
-.dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody > table > tbody > tr > td > div.dataTables_sizing {
+.dataTables_wrapper
+  .dataTables_scroll
+  div.dataTables_scrollBody
+  > table
+  > thead
+  > tr
+  > th
+  > div.dataTables_sizing,
+.dataTables_wrapper
+  .dataTables_scroll
+  div.dataTables_scrollBody
+  > table
+  > thead
+  > tr
+  > td
+  > div.dataTables_sizing,
+.dataTables_wrapper
+  .dataTables_scroll
+  div.dataTables_scrollBody
+  > table
+  > tbody
+  > tr
+  > th
+  > div.dataTables_sizing,
+.dataTables_wrapper
+  .dataTables_scroll
+  div.dataTables_scrollBody
+  > table
+  > tbody
+  > tr
+  > td
+  > div.dataTables_sizing {
   height: 0;
   overflow: hidden;
   margin: 0 !important;
@@ -275,10 +332,10 @@ table.dataTable td {
   clear: both;
   height: 0;
 }
- 
+
 @media screen and (max-width: 767px) {
   .dataTables_wrapper .dataTables_info,
-.dataTables_wrapper .dataTables_paginate {
+  .dataTables_wrapper .dataTables_paginate {
     float: none;
     text-align: center;
   }
@@ -288,11 +345,24 @@ table.dataTable td {
 }
 @media screen and (max-width: 640px) {
   .dataTables_wrapper .dataTables_length,
-.dataTables_wrapper .dataTables_filter {
+  .dataTables_wrapper .dataTables_filter {
     float: none;
     text-align: center;
   }
   .dataTables_wrapper .dataTables_filter {
     margin-top: 0.5em;
   }
+}
+#map {
+  top: 0;
+  bottom: 0;
+  width: 740px;
+  height: 400px;
+}
+.mapboxgl-canvas-container {
+  height: 100vh;
+}
+.mapboxgl-popup {
+  max-width: 400px;
+  font: 12px/20px "Helvetica Neue", Arial, Helvetica, sans-serif;
 }

@@ -1,0 +1,1 @@
+{% assign address = include.address %}{% for mapping in site.include.data.city %}{% assign old=mapping[0] %}{% assign new=mapping[1] %}{% assign address = address|replace:old,new %}{% endfor %}{{address | strip}}

@@ -1,0 +1,16 @@
+{% assign icon_found=false%}
+{% assign location_name = include.data.name | downcase %}
+{% assign location_type = include.data.business | downcase %}
+{% for icon in site.data.business %}
+{% assign match=icon[0] | downcase%}
+  {% if location_name contains match %}
+    {{icon[1]}}-15
+    {%assign icon_found=true%}
+    {%break%}
+  {% elsif location_type contains match %}
+    {{icon[1]}}-15
+    {%assign icon_found=true%}
+    {%break%}
+  {%endif%}
+{%endfor%}
+{%unless icon_found%}marker-15{%endunless%}
