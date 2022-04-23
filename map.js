@@ -12,10 +12,6 @@ map.on("idle", function () {
 });
 map.on("load", (e) => {
   map.resize();
-  map.loadImage("/plugo/map-marker-icon.png", (error, image) => {
-    if (error) throw error;
-    map.addImage("custom-marker", image);
-  });
   map.addSource("plugo", {
     type: "geojson",
     data: "map.geojson",
