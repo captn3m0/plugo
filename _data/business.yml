@@ -25,7 +25,7 @@ corporate: suitcase
 coworking space: suitcase
 cultural: theatre
 dealer: shop
-delivery: triangle
+delivery: marker
 dhaba: fast-food
 diabetologist: hospital
 fast food: fast-food
@@ -51,7 +51,7 @@ institute: college
 juice: cafe
 kitchen: restaurant
 lodging: lodging
-logistics: triangle
+logistics: marker
 lounge: restaurant
 management: suitcase
 materinity: hospital
@@ -88,5 +88,5 @@ sweets shop: shop
 textile: clothing-store
 toqri: suitcase
 training centre: college
-ware house: triangle
-warehouse: triangle
+ware house: marker
+warehouse: marker

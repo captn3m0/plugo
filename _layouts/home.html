@@ -3,7 +3,13 @@ layout: default
 ---
 <details open>
 	<summary>Show Map</summary>
-	<div width="740px" height="300px" id="map"></div>
+	<div width="740px" height="300px" id="map">
+		<nav id="filter-group" class="filter-group">
+			<input id="markers-zero" type="checkbox">
+			<label for="markers-zero"><span></span>Zero Powerbanks</label>
+		</nav>
+	</div>
+	
 </details>
 
 {{content}}

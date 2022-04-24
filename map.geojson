@@ -3,7 +3,6 @@
 {
   "type": "FeatureCollection",
   "features": [{% for location in site.data.plugo %}
-  	{% if location.totalAvailablePowerbanks > 0 %}
     {
       "type": "Feature",
       "properties": {
@@ -28,7 +27,6 @@
         "type": "Point",
         "coordinates": [{{location.lng}},{{location.lat}}]
       }
-    }{% endif %}
-    {% if forloop.rindex > 1 %}{%if location.totalAvailablePowerbanks>0 %},{%endif%}{% endif%}{% endfor %}
+    }{% if forloop.rindex > 1 %},{%endif%}{% endfor %}
   ]
 }
