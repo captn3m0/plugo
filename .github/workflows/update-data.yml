@@ -17,6 +17,10 @@ jobs:
     - name: Update data
       run: >
         curl --request GET --url 'https://prod.plugo.io/api/v2/goblin/stores?lat=18.46448805396234&lng=72.12753139436244&radius=90999999' --header 'Authorization: Bearer ${{secrets.token}}' > _data/plugo.json
+        export VERSION=`date +%Y.%-m.%-d`
+        sed -i "s/^version.*/version: $(VERSION)/" CITATION.cff
+        sed -i "s/^date-released.*/date-released: `date --rfc-3339=date`/" CITATION.cff
+    # TODO: Add tag for date as well
     - uses: stefanzweifel/git-auto-commit-action@v4
       with:
         commit_message: Update Plugo Data
