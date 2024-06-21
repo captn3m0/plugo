@@ -6,5 +6,17 @@ theme: minima
 baseurl: /plugo/
 url: https://captnemo.in
 timezone: Asia/Kolkata
-# mapboxtoken: pk.eyJ1IjoiY2FwdG4zbTAiLCJhIjoiY2wyYmdvNmcxMGYyMDNic2MyY3Rvd28yNiJ9.4IiMK807T05VEE2loTN1Jg
 mapboxtoken: pk.eyJ1IjoiY2FwdG4zbTAiLCJhIjoiY2pmanVvdWNkMHNmOTJ3bzNnYXIwcnpwZSJ9.C1N7hcYotH63uQjx5sk7Xg
+exclude:
+  - x.sh
+  - .venv
+  - _site
+  - .jekyll-cache
+  - Gemfile
+  - Gemfile.lock
+  - .git
+  - .github
+  - _config.yml
+  - 404.html
+  - CITATION.cff
+  - "*.py"

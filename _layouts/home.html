@@ -12,6 +12,26 @@ layout: default
 	
 </details>
 
+<details open>
+	<summary>Show Number of Locations by Time</summary>
+	<div id="chart"></div>
+</details>
+
+<details open>
+	<summary>Show Number of Powerbanks by Time</summary>
+	<div id="chart2"></div>
+</details>
+
+<script src="https://d3js.org/d3.v7.min.js"></script>
+	<style>
+        .line {
+            fill: none;
+            stroke: steelblue;
+            stroke-width: 2px;
+        }
+    </style>
+    <script src="assets/chart.js"></script>
+
 {{content}}
 
 {% assign zeroPowerBankLocations = 0 %}

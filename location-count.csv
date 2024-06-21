@@ -1,0 +1,6 @@
+---
+permalink: /location-count.csv
+# This generates a count for every date
+---
+date,count{%assign count = 0 %}{% assign locations = site.data.plugo | sort:'createdAt' %}{% for l in locations %}{%assign count = count|plus:1 %}
+{{l.createdAt|slice:0,10}},{{count}}{% endfor %}
