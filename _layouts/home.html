@@ -1,6 +1,13 @@
 ---
 layout: default
 ---
+
+<style>
+	{% for id in site.data.dead %}tr[data-id="{{id}}"]{% if forloop.last %}{% else %},{% endif %}
+	{% endfor %} {
+		background-color: #f8d7da !important;
+	}
+</style>
 <details open>
 	<summary>Show Map</summary>
 	<div width="740px" height="300px" id="map">
@@ -47,8 +54,9 @@ layout: default
 	<tbody>
 {% assign locations = site.data.plugo|sort:'state' %}
 {% assign total = 0 %}
+
 {% for row in locations %}
-<tr id="{{row.id}}">
+<tr id="{{row.id}}" data-id="{{row.id}}">
 	<td>
 	{%comment%}
 	{% assign state_lower_case =  row.state|downcase %}
@@ -57,7 +65,9 @@ layout: default
 	{% include location.html data=row %}
 	</td>
 	<td>{{row.business}}</td>
-	<td>{{row.totalAvailablePowerbanks}}</td>
+	<td>{{row.totalAvailablePowerbanks}} 
+		{% if  site.data.dead contains row.id  %}💀{%endif%}
+	</td>
   {% if row.totalAvailablePowerbanks == 0 %}
   {% assign zeroPowerBankLocations = zeroPowerBankLocations | plus:1 %}
   {% endif %}
@@ -73,11 +83,14 @@ layout: default
 <ul>
 	<li>Total Available Powerbanks: {{total}}</li>
 	<li>Total Locations: {{locations|size}}</li>
-  <li>{{zeroPowerBankLocations}} locations with zero powerbanks</li>
-  <li>Last Updated: {{site.time | date: "%Y-%m-%d %H:%M" }} IST</li>
-  <li>This page is automatically updated 5 times a day, at roughly 0930, 1230, 1530, 1830, 2130 IST</li>
-  <li>The map is also available in <a href="map.geojson">GeoJSON Format</a>. You can also view the underlying data directly at <a href="http://geojson.io/#data=data:text/x-url,https://captnemo.in/plugo/map.geojson">geojson.io</a>.
+	<li>{{zeroPowerBankLocations}} locations with zero powerbanks</li>
+	<li>Last Updated: {{site.time | date: "%Y-%m-%d %H:%M" }} IST</li>
+	<li>This page is automatically updated 5 times a day, at roughly 0930, 1230, 1530, 1830, 2130 IST</li>
+	<li>The map is also available in <a href="map.geojson">GeoJSON Format</a>. You can also view the underlying data directly at <a href="http://geojson.io/#data=data:text/x-url,https://captnemo.in/plugo/map.geojson">geojson.io</a>.
+	<li>Total Dead Locations: {{site.data.dead | size }} (Locations with zero power banks for the last two weeks)</li>
 </ul>
+
+  <li>There are {{site.data.dead | size}} locations that are dead. These are locations that have not been updated in the last 30 days.</li>
 
 <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
 <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js" integrity="sha256-04C2SeXF6JtsrsX+sFnI+gFdm56VJdhW49hWm4m+0io=" crossorigin="anonymous"></script>
