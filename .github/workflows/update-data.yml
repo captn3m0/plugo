@@ -20,6 +20,9 @@ jobs:
         export VERSION=`date +%Y.%-m.%-d`
         sed -i "s/^version.*/version: $(VERSION)/" CITATION.cff
         sed -i "s/^date-released.*/date-released: `date --rfc-3339=date`/" CITATION.cff
+        pip install msgspec pygit2
+        python count.py
+        python dead-locations.py
     # TODO: Add tag for date as well
     - uses: stefanzweifel/git-auto-commit-action@v4
       with:
