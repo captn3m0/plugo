@@ -82,15 +82,12 @@ layout: default
 <h3>Statistics</h3>
 <ul>
 	<li>Total Available Powerbanks: {{total}}</li>
-	<li>Total Locations: {{locations|size}}</li>
+	<li>Total Locations: {{locations|size}} out of which {{site.data.dead | size }} are dead (no powerbanks seen in 2 weeks)</li>
 	<li>{{zeroPowerBankLocations}} locations with zero powerbanks</li>
 	<li>Last Updated: {{site.time | date: "%Y-%m-%d %H:%M" }} IST</li>
 	<li>This page is automatically updated 5 times a day, at roughly 0930, 1230, 1530, 1830, 2130 IST</li>
 	<li>The map is also available in <a href="map.geojson">GeoJSON Format</a>. You can also view the underlying data directly at <a href="http://geojson.io/#data=data:text/x-url,https://captnemo.in/plugo/map.geojson">geojson.io</a>.
-	<li>Total Dead Locations: {{site.data.dead | size }} (Locations with zero power banks for the last two weeks)</li>
 </ul>
-
-  <li>There are {{site.data.dead | size}} locations that are dead. These are locations that have not been updated in the last 30 days.</li>
 
 <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
 <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js" integrity="sha256-04C2SeXF6JtsrsX+sFnI+gFdm56VJdhW49hWm4m+0io=" crossorigin="anonymous"></script>

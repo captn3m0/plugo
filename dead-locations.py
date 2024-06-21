@@ -26,8 +26,6 @@ def check_dead_location(commits, repo):
                     location_id = item.id
                     total_powerbanks = item.totalAvailablePowerbanks
                     all_locations.add(location_id)
-                    if location_id == "9a5c1751-9820-4102-9e0d-f84ab974031d":
-                        print(item)
 
                     if total_powerbanks != 0:
                         alive_locations.add(location_id)
