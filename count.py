@@ -75,7 +75,7 @@ def main():
     output_sorted.insert(0, output[0])  # Insert the header row back
     
     # Write the sorted output to CSV
-    with open('output.csv', 'w', newline='') as csvfile:
+    with open('powerbank-count.csv', 'w', newline='') as csvfile:
         csvwriter = csv.writer(csvfile)
         csvwriter.writerows(output_sorted)
     
