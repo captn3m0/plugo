@@ -33,7 +33,7 @@ def check_dead_location(commits, repo):
         except KeyError:
             pass
     
-    return all_locations - alive_locations
+    return sorted(list(all_locations - alive_locations))
 
 # Main function to iterate through commits and identify dead locations
 def main():
