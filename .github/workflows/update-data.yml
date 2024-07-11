@@ -16,15 +16,17 @@ jobs:
         ref: ${{ github.head_ref }}
     - name: Update data
       run: |
-        curl --silent --header 'Authorization: Bearer ${{secrets.token}}' --output _data/plugo.json \
+        curl --silent --header "Authorization: Bearer ${PLUGO_TOKEN}" --output _data/plugo.json \
           'https://prod.plugo.io/api/v2/goblin/stores?lat=18.46448805396234&lng=72.12753139436244&radius=90999999' 
-        jq ".[]|length" _data/plugo.json
+        jq ".|length" _data/plugo.json
         export VERSION=`date +%Y.%-m.%-d`
         sed -i "s/^version.*/version: $(VERSION)/" CITATION.cff
         sed -i "s/^date-released.*/date-released: `date --rfc-3339=date`/" CITATION.cff
         pip install msgspec pygit2
         python count.py
         python dead-locations.py
+      env:
+        PLUGO_TOKEN: ${{ secrets.token }}
     # TODO: Add tag for date as well
     - uses: stefanzweifel/git-auto-commit-action@v4
       with:

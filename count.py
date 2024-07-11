@@ -23,11 +23,14 @@ def process_commit(repo, commit):
         tree = commit.tree
         if '_data/plugo.json' in tree:
             blob = repo[tree['_data/plugo.json'].id]
-            file_content = blob.data.decode('utf-8')
-            total_powerbanks = calculate_total_powerbanks(file_content)
-            if total_powerbanks is not None:
-                commit_date = datetime.fromtimestamp(commit.commit_time).strftime('%Y-%m-%d')
-                return commit_date, total_powerbanks
+            try:
+                file_content = blob.data.decode('utf-8')
+                total_powerbanks = calculate_total_powerbanks(file_content)
+                if total_powerbanks is not None:
+                    commit_date = datetime.fromtimestamp(commit.commit_time).strftime('%Y-%m-%d')
+                    return commit_date, total_powerbanks
+            except Exception as e:
+                return None
     except KeyError:
         pass
     return None

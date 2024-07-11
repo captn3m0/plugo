@@ -20,7 +20,11 @@ def check_dead_location(commits, repo):
             if '_data/plugo.json' in tree:
                 blob = repo[tree['_data/plugo.json'].id]
                 file_content = blob.data.decode('utf-8')
-                data = msgspec.json.decode(file_content, type=list[PowerbankData])
+                try:
+                    data = msgspec.json.decode(file_content, type=list[PowerbankData])
+                except Exception as e:
+                    continue
+                
 
                 for item in data:
                     location_id = item.id
@@ -53,7 +57,7 @@ def main():
     ]
 
     # Check for dead locations
-    dead_locations = check_dead_location(commits_within_range, repo)
+    dead_locations = sorted(check_dead_location(commits_within_range, repo))
 
     # Write dead_locations to JSON file
     output_file = '_data/dead.json'
