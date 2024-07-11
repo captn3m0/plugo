@@ -8,3 +8,8 @@ group :jekyll_plugins do
 end
 
 gem "webrick", "~> 1.7"
+
+# These are going away in ruby 3.4
+# https://github.com/ruby/ruby/blob/v3_3_0/NEWS.md#stdlib-updates
+gem "csv", "~> 3.3"
+gem "base64", "~> 0.2.0"
