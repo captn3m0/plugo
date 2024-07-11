@@ -59,7 +59,7 @@ def main():
     repo = pygit2.Repository(repo_path)
     
     # Prepare CSV output
-    output = [['date', 'totalAvailablePowerbanks']]
+    output = [['date', 'count']]
     
     # Process every 5th commit in parallel
     with concurrent.futures.ThreadPoolExecutor() as executor:

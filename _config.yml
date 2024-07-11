@@ -20,3 +20,5 @@ exclude:
   - 404.html
   - CITATION.cff
   - "*.py"
+sass:
+  quiet_deps: true
