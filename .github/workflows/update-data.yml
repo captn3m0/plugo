@@ -28,7 +28,7 @@ jobs:
       env:
         PLUGO_TOKEN: ${{ secrets.token }}
     # TODO: Add tag for date as well
-    - uses: stefanzweifel/git-auto-commit-action@v4
+    - uses: stefanzweifel/git-auto-commit-action@v5
       with:
         commit_message: Update Plugo Data
         commit_author: 'github-actions[bot] <github-actions[bot]@users.noreply.github.com>'
