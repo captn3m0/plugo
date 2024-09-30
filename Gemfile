@@ -7,7 +7,7 @@ group :jekyll_plugins do
   gem "jekyll-feed", "~> 0.12"
 end
 
-gem "webrick", "~> 1.7"
+gem "webrick", "~> 1.8"
 
 # These are going away in ruby 3.4
 # https://github.com/ruby/ruby/blob/v3_3_0/NEWS.md#stdlib-updates
