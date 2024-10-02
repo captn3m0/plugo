@@ -14,6 +14,8 @@ jobs:
     - uses: actions/checkout@v4
       with:
         ref: ${{ github.head_ref }}
+        fetch-depth: 0
+        show-progress: true
     - name: Update data
       run: |
         curl --silent --header "Authorization: Bearer ${PLUGO_TOKEN}" --output _data/plugo.json \
